@@ -1,6 +1,11 @@
 <?php include 'header_browse.php';?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/demo.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/set1.css" />
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
 <style>
 	.movie_thumb{}
 	.btn_opaque{font-size:20px; border: 1px solid #939393;text-decoration: none;margin: 10px;background-color: rgba(0, 0, 0, 0.74); color: #fff;}
@@ -10,17 +15,19 @@
 <?php
 	$featured_movie		=	$this->db->get_where('movie', array('featured'=>1))->row();
 	
-	?>
-<div style="height:85vh;width:100%;background-image: url(<?php echo $this->crud_model->get_poster_url('movie' , $featured_movie->movie_id);?>); background-size:cover;">
-	<div style="font-size: 85px;font-weight: bold;clear: both;padding: 200px 0px 0px 50px;color: #fff;">
-		<?php echo $featured_movie->title;?>
-		<div style="font-size: 20px; letter-spacing: .2px; color: #ccc; font-weight: 100; width:50%;">
+	?>  
+
+<!-- <div style="height:85vh;width:100%;background-image: url(<?php echo $this->crud_model->get_poster_url('movie' , $featured_movie->movie_id);?>); background-size:cover;"> -->
+<div style="height:85vh;width:100%;background-image:url(<?php echo base_url('assets/global/GREAT3.png'); ?>); background-size:cover;">
+	<!-- <div style="font-size: 85px;font-weight: bold;clear: both;padding: 200px 0px 0px 50px;color: #fff;">
+		<?php echo $featured_movie->title;?> -->
+		<!-- <div style="font-size: 20px; letter-spacing: .2px; color: #ccc; font-weight: 100; width:50%;">
 			<?php echo $featured_movie->description_short;?>
-		</div>
-		<a href="<?php echo base_url();?>index.php?browse/playmovie/<?php echo $featured_movie->movie_id;?>" 
+		</div> -->
+		<!-- <a href="<?php echo base_url();?>index.php?browse/playmovie/<?php echo $featured_movie->movie_id;?>" 
 			class="btn btn-danger btn-lg" style="font-size: 20px;"> 
-		<b><i class="fa fa-play"></i> <?php echo get_phrase('PLAY');?></b>
-		</a>
+		<b><i class="fa fa-play"  ></i> <?php echo get_phrase('PLAY');?></b>
+		</a> -->
 		<!-- ADD OR DELETE FROM PLAYLIST -->
 		<span id="mylist_button_holder">
 		</span>

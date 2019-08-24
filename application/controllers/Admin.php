@@ -69,6 +69,140 @@ class Admin extends CI_Controller {
 		redirect(base_url().'index.php?admin/genre_list' , 'refresh');
 	}
 
+	// LIST OF BIMBEL
+	function bimbel_list()
+	{
+		$page_data['page_name']		=	'bimbel_list';
+		$page_data['page_title']	=	'Manage Bimbel';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// CREATE A NEW BIMBEL
+	function bimbel_create()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->create_bimbel();
+			redirect(base_url().'index.php?admin/bimbel_list' , 'refresh');
+		}
+		$page_data['page_name']		=	'bimbel_create';
+		$page_data['page_title']	=	'Create Bimbel';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// EDIT A BIMBEL
+	function bimbel_edit($id_bimbel = '')
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$data['bidang']			 =	$this->input->post('bidang');
+			$data['deskripsi_bidang']=	$this->input->post('deskripsi_bidang');
+			$this->db->update('bimbel', $data,  array('id_bimbel' => $id_bimbel));
+			redirect(base_url().'index.php?admin/bimbel_list' , 'refresh');
+		}
+		$page_data['id_bimbel']		=	$id_bimbel;
+		$page_data['page_name']		=	'bimbel_edit';
+		$page_data['page_title']	=	'Edit Bimbel';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// DELETE A GENRE
+	function bimbel_delete($id_bimbel = '')
+	{
+		$this->db->delete('bimbel',  array('id_bimbel' => $id_bimbel));
+		redirect(base_url().'index.php?admin/bimbel_list' , 'refresh');
+	}
+
+	// LIST OF E-COURSE
+	function ecourse_list()
+	{
+		$page_data['page_name']		=	'ecourse_list';
+		$page_data['page_title']	=	'Manage E-Course';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// CREATE A NEW E-COURSE
+	function ecourse_create()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->create_ecourse();
+			redirect(base_url().'index.php?admin/ecourse_list' , 'refresh');
+		}
+		$page_data['page_name']		=	'ecourse_create';
+		$page_data['page_title']	=	'Create E-Course';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// EDIT A E-COURSE
+	function ecourse_edit($id_ecourse = '')
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$data['kategori']		   =	$this->input->post('kategori');
+			$data['deskripsi_kategori']=	$this->input->post('deskripsi_kategori');
+			$this->db->update('ecourse', $data,  array('id_ecourse' => $id_ecourse));
+			redirect(base_url().'index.php?admin/ecourse_list' , 'refresh');
+		}
+		$page_data['id_ecourse']	=	$id_ecourse;
+		$page_data['page_name']		=	'ecourse_edit';
+		$page_data['page_title']	=	'Edit E-Course';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// DELETE A E-COURSE
+	function ecourse_delete($id_ecourse = '')
+	{
+		$this->db->delete('ecourse',  array('id_ecourse' => $id_ecourse));
+		redirect(base_url().'index.php?admin/ecourse_list' , 'refresh');
+	}
+
+	// LIST OF MATERIAL
+	function material_list()
+	{
+		$page_data['page_name']		=	'material_list';
+		$page_data['page_title']	=	'Manage Study Material';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// CREATE A NEW MATERIAL
+	function material_create()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->create_material();
+			redirect(base_url().'index.php?admin/material_list' , 'refresh');
+		}
+		$page_data['page_name']		=	'material_create';
+		$page_data['page_title']	=	'Create Study Material';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// EDIT A MATERIAL
+	function material_edit($id_materi = '')
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$data['materi']		   =	$this->input->post('materi');
+			$data['level']         =	$this->input->post('level');
+			$data['kategori']      =	$this->input->post('kategori');
+			$this->db->update('materi', $data,  array('id_materi' => $id_materi));
+			redirect(base_url().'index.php?admin/material_list' , 'refresh');
+		}
+		$page_data['id_materi'] 	=	$id_materi;
+		$page_data['page_name']		=	'material_edit';
+		$page_data['page_title']	=	'Edit Study Material';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// DELETE A E-COURSE
+	function material_delete($id_materi = '')
+	{
+		$this->db->delete('materi',  array('id_materi' => $id_materi));
+		redirect(base_url().'index.php?admin/material_list' , 'refresh');
+	}
+
+
 	// WATCH LIST OF MOVIES, MANAGE THEM
 	function movie_list()
 	{
@@ -227,6 +361,48 @@ class Admin extends CI_Controller {
 	{
 		$this->db->delete('episode',  array('episode_id' => $episode_id));
 		redirect(base_url().'index.php?admin/season_edit/'.$series_id.'/'.$season_id , 'refresh');
+	}
+
+	// WATCH LIST OF VIDEO, MANAGE THEM
+	function video_list()
+	{
+		$page_data['page_name']		=	'video_list';
+		$page_data['page_title']	=	'Manage Video';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// CREATE A NEW VIDEO
+	function video_create()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->create_video();
+			redirect(base_url().'index.php?admin/video_list' , 'refresh');
+		}
+		$page_data['page_name']		=	'video_create';
+		$page_data['page_title']	=	'Create video';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// EDIT A VIDEO
+	function video_edit($id_video = '')
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->update_video($id_video);
+			redirect(base_url().'index.php?admin/video_list' , 'refresh');
+		}
+		$page_data['id_video']		=	$id_video;
+		$page_data['page_name']		=	'video_edit';
+		$page_data['page_title']	=	'Edit video';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// DELETE A VIDEO
+	function video_delete($id_video = '')
+	{
+		$this->db->delete('video',  array('id_video' => $id_video));
+		redirect(base_url().'index.php?admin/video_list' , 'refresh');
 	}
 
 	// WATCH LIST OF ACTORS, MANAGE THEM

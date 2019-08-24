@@ -222,6 +222,46 @@ class Crud_model extends CI_Model {
         return $query->result_array();
 	}
 
+	function get_bimbel()
+	{
+		$query 		=	 $this->db->get('bimbel');
+        return $query->result_array();
+	}
+
+	function get_ecourse()
+	{
+		$query 		=	 $this->db->get('ecourse');
+        return $query->result_array();
+	}
+
+	function get_material()
+	{
+		$query 		=	 $this->db->get('materi');
+        return $query->result_array();
+	}
+
+	function create_bimbel(){
+		$data['bidang']			 =	$this->input->post('bidang');
+		$data['deskripsi_bidang']=	$this->input->post('deskripsi_bidang');
+		$this->db->insert('bimbel', $data);
+		$id_bimbel = $this->db->insert_id();
+	}
+
+	function create_ecourse(){
+		$data['kategori']			 =	$this->input->post('kategori');
+		$data['deskripsi_kategori']  =	$this->input->post('deskripsi_kategori');
+		$this->db->insert('ecourse', $data);
+		$id_ecourse = $this->db->insert_id();
+	}
+
+	function create_material(){
+		$data['materi']	   =	$this->input->post('materi');
+		$data['kategori']  =	$this->input->post('kategori');
+		$data['level']     =	$this->input->post('level');
+		$this->db->insert('materi', $data);
+		$id_materi = $this->db->insert_id();
+	}
+
 	function paginate($base_url, $total_rows, $per_page, $uri_segment)
 	{
         $config = array('base_url' => $base_url,
@@ -399,6 +439,79 @@ class Crud_model extends CI_Model {
         return $episode_details;
     }
 
+    function create_video()
+	{
+	    $config['upload_path']          = './assets/global/video';
+	    $config['allowed_types']        = 'gif|jpg|png|mp4|jpeg|flv|wmv';
+	    $config['max_size']             = '1000M';
+	    $config['remove_space']         = TRUE;
+
+	    $this->load->library('upload', $config);
+
+	    if ( (! $this->upload->do_upload('thumbnail'))&&(! $this->upload->do_upload('file_video')))
+	    {
+	      echo "gagal";
+	    }
+	    else
+	    {
+	        $fileSM1    = $this->upload->do_upload('thumbnail');
+	        $file1      = $this->upload->data();
+	        $fileSM2    = $this->upload->do_upload('file_video');
+	        $file2      = $this->upload->data();
+	        $file1      = $file1['file_name'];
+	        $file2      = $file2['file_name'];
+	        $data       = array(
+	        			'judul'           => $this->input->post('judul',true),
+	                    'level'           => $this->input->post('level',true),
+	                    'kategori'        => $this->input->post('kategori',true),
+	                    'deskripsi_video' => $this->input->post('deskripsi_video',true),
+	                    'thumbnail'       => $file1,
+	                    'file_video'      => $file2
+	        );
+	        $id_video = $this->db->insert_id();
+	        $this->db->insert('video', $data);
+			// $id_video = $this->db->insert_id();
+			move_uploaded_file($_FILES['file_video']['tmp_name'], 'assets/global/video/' . $id_video . '.mp4');
+			// move_uploaded_file($_FILES['thumbnail']['tmp_name'], 'assets/global/video_thumb/' . $id_video . '.jpg');
+	    }
+		
+	}
+
+	function update_video($id_video = '')
+	{
+		$config['upload_path']          = './assets/global/video';
+	    $config['allowed_types']        = 'gif|jpg|png|mp4|jpeg|flv|wmv';
+	    $config['max_size']             = '1000M';
+	    $config['remove_space']         = TRUE;
+
+	    $this->load->library('upload', $config);
+
+	    if ( (! $this->upload->do_upload('thumbnail'))&&(! $this->upload->do_upload('file_video')))
+	    {
+	      echo "gagal";
+	    }
+	    else
+	    {
+	        $fileSM1    = $this->upload->do_upload('thumbnail');
+	        $file1      = $this->upload->data();
+	        $fileSM2    = $this->upload->do_upload('file_video');
+	        $file2      = $this->upload->data();
+	        $file1      = $file1['file_name'];
+	        $file2      = $file2['file_name'];
+	        $data       = array(
+	        			'judul'           => $this->input->post('judul',true),
+	                    'level'           => $this->input->post('level',true),
+	                    'kategori'        => $this->input->post('kategori',true),
+	                    'deskripsi_video' => $this->input->post('deskripsi_video',true),
+	                    'thumbnail'       => $file1,
+	                    'file_video'      => $file2
+	        );
+        $this->db->update('video', $data, array('id_video'=>$id_video));
+		// $id_video = $this->db->insert_id();
+		move_uploaded_file($_FILES['file_video']['tmp_name'], 'assets/global/video/' . $id_video . '.mp4');
+	    }
+	}
+
 	function create_actor()
 	{
 		$data['name']				=	$this->input->post('name');
@@ -481,6 +594,16 @@ class Crud_model extends CI_Model {
 		$query	=	$this->db->get($type);
 		return $query->result_array();
 	}
+
+	function get_vid_url($type = '' , $id = '')
+	{
+        if (file_exists('assets/global/'.$type.'/'.$id . '.mp4'))
+            $video_url = base_url() . 'assets/global/'.$type.'/'.$id . '.mp4';
+        else if (file_exists('assets/global/'.$type.'/'.$id . '.jpg'))
+             $video_url = base_url() . 'assets/global/'.$type.'/'.$id . '.jpg';
+
+        return $video_url;
+    }
 
 	function get_thumb_url($type = '' , $id = '')
 	{

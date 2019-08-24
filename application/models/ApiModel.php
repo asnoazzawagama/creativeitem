@@ -1,9 +1,4 @@
 <?php
-header("Access-Control-Allow-Methods: GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
-header('Access-Control-Allow-Origin: *');
-
-
 class ApiModel extends CI_model
 {
 
@@ -14,11 +9,8 @@ class ApiModel extends CI_model
     }
     function getUser()
     {
-        return $this->db->query("select * from user");     
-    }
-    function getMovie()
-    {
-        return $this->db->query("select * from movie");       
+        return $this->db->query("select * from user");
+       
         // return $query->result_array();
     }
 }

@@ -6,12 +6,12 @@
                    <!-- LOGO -->
                    <a href="<?php echo base_url('index.php?admin'); ?>" class="logo text-center">
                        <span class="logo-lg">
-                           <img src="<?php echo base_url();?>assets/global/logo.png" alt="" height="40">
+                           <img src="<?php echo base_url();?>/assets/global/neonton 5 shadow.png" alt="" height="40">
                        </span>
 
                        <!-- We should use a small logo for this image tag -->
                        <span class="logo-sm">
-                           <img src="<?php echo base_url();?>assets/global/logo.png" alt="" height="40">
+                           <img src="<?php echo base_url();?>/assets/global/neonton 5 shadow.png" alt="" height="40">
                        </span>
                    </a>
 
@@ -44,6 +44,36 @@
                                <span> <?php echo get_phrase('genre'); ?> </span>
                            </a>
                        </li>
+
+                       <li class="side-nav-item <?php if ($page_name == 'bimbel_list' || $page_name == 'bimbel_edit' || $page_name == 'bimbel_create')echo 'active';?>">
+                           <a href="<?php echo base_url();?>index.php?admin/bimbel_list" class="side-nav-link <?php if ($page_name == 'bimbel_list' || $page_name == 'bimbel_edit' || $page_name == 'bimbel_create')echo 'active';?>">
+                               <i class=""></i>
+                               <span> <?php echo get_phrase('bimbel'); ?> </span>
+                           </a>
+                       </li>
+
+                       <li class="side-nav-item <?php if ($page_name == 'ecourse_list' || $page_name == 'ecourse_edit' || $page_name == 'ecourse_create')echo 'active';?>">
+                           <a href="<?php echo base_url();?>index.php?admin/ecourse_list" class="side-nav-link <?php if ($page_name == 'ecourse_list' || $page_name == 'ecourse_edit' || $page_name == 'ecourse_create')echo 'active';?>">
+                               <i class=""></i>
+                               <span> <?php echo get_phrase('e-course'); ?> </span>
+                           </a>
+                       </li>
+
+                       <li class="side-nav-item <?php if ($page_name == 'material_list' || $page_name == 'material_edit' || $page_name == 'material_create')echo 'active';?>">
+                           <a href="<?php echo base_url();?>index.php?admin/material_list" class="side-nav-link <?php if ($page_name == 'material_list' || $page_name == 'material_edit' || $page_name == 'material_create')echo 'active';?>">
+                               <i class=""></i>
+                               <span> <?php echo get_phrase('study material'); ?> </span>
+                           </a>
+                       </li>
+
+                       <li class="side-nav-item <?php if ($page_name == 'video_list' || $page_name == 'video_edit' || $page_name == 'video_create')echo 'active';?>">
+                           <a href="<?php echo base_url();?>index.php?admin/video_list" class="side-nav-link <?php if ($page_name == 'video_list' || $page_name == 'video_edit' || $page_name == 'video_create')echo 'active';?>">
+                               <i class="glyphicon glyphicon-facetime-video"></i>
+                               <span> <?php echo get_phrase('video'); ?> </span>
+                           </a>
+                       </li>
+
+                       
 
                        <li class="side-nav-item <?php if ($page_name == 'actor_list' || $page_name == 'actor_edit' || $page_name == 'actor_create')echo 'active';?>">
                            <a href="<?php echo base_url();?>index.php?admin/actor_list" class="side-nav-link <?php if ($page_name == 'actor_list' || $page_name == 'actor_edit' || $page_name == 'actor_create')echo 'active';?>">

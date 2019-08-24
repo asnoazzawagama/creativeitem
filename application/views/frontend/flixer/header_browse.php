@@ -19,7 +19,7 @@
 	<div class="container" style=" width: 100%;">
 		<div class="navbar-header">
 			<a href="<?php echo base_url();?>index.php?browse/home" class="navbar-brand">
-				<img src="<?php echo base_url();?>/assets/global/logo.png" style=" height: 32px;margin-right: 50px;" />
+				<img src="<?php echo base_url();?>/assets/global/neonton 5 shadow.png" style=" height: 40px;margin-right: 50px;" />
 			</a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 				<span class="icon-bar"></span>
@@ -29,8 +29,48 @@
 		</div>
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
-				<!-- MOVIES GENRE WISE-->
+				<!-- ENTERTAINMENT -->
 				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
+						<?php echo get_phrase('Entertainment');?> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="themes">
+						<li><a href="">
+							Movies
+							</a>
+						</li>
+						<li><a href="">
+							TV Series
+							</a>
+						</li>
+						<li><a href="">
+							Documentary
+							</a>
+						</li>
+						<li><a href="">
+							Reality Show
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-- EDUCATION -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
+						<?php echo get_phrase('Education');?> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="themes">
+						<li><a href="">
+							Bimbel
+							</a>
+						</li>
+						<li><a href="">
+							E-Course
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-- MOVIES GENRE WISE-->
+				<!-- <li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
 						<?php echo get_phrase('Movie');?> <span class="caret"></span>
 					</a>
@@ -52,9 +92,9 @@
 						</li>
 						<?php endforeach;?>
 					</ul>
-				</li>
+				</li> -->
 				<!-- TV SERIES GENRE WISE-->
-				<li class="dropdown">
+				<!-- <li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
 						<?php echo get_phrase('Tv_Serial');?> <span class="caret"></span>
 					</a>
@@ -76,7 +116,7 @@
 						</li>
 						<?php endforeach;?>
 					</ul>
-				</li>
+				</li> -->
 				<!-- MY LIST -->
 				<li>
 					<a href="<?php echo base_url();?>index.php?browse/mylist"><?php echo get_phrase('My_List');?></a>
