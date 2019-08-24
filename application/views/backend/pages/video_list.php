@@ -48,7 +48,7 @@ Create Video
 				            </video> -->
 							<td style="vertical-align: middle;"><?php echo $counter++;?></td>
 							<td>
-								<?php echo "<img class='img-fluid' width=90 height=70 src='".base_url('assets/global/video/'.$row['thumbnail'])."'  > " ?>
+								<?php echo "<img class='img-fluid' width=90 height=70 src='".base_url('assets/global/video_thumb/'.$row['thumbnail'])."'  > " ?>
 
 								<!-- <img src='".base_url('assets/global/video/'.$row['judul'])."' style="height: 60px;"  /> --></td>
 							<td style="vertical-align: middle;"><?php echo $row['judul'];?></td>
